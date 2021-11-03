@@ -1,45 +1,55 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import styled from "styled-components";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
-}
+    <Container>
+      <Header>
+        <h1>Header</h1>
+      </Header>
+      <ContentContainer>
+        <ListContainer></ListContainer>
+        <SideContainer></SideContainer>
+      </ContentContainer>
+    </Container>
+  );
+};
 
-export default App
+const Container = styled("div")`
+  background-color: lightgray;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  /* flex */
+  display: flex;
+  flex-direction: column;
+`;
+
+const Header = styled("div")`
+  background-color: white;
+  display: flex;
+  padding: 0 1rem;
+`;
+
+const ContentContainer = styled("div")`
+  padding: 1rem;
+  flex-grow: 1;
+  overflow-y: scroll;
+  /* flex */
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+`;
+
+const ListContainer = styled("div")`
+  min-height: 60rem;
+  background-color: red;
+  /* flex */
+  flex: 8;
+`;
+
+const SideContainer = styled(`div`)`
+  background-color: white;
+  min-height: 100%;
+  /* flex */
+  flex: 4;
+`;
